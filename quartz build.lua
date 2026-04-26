@@ -2,10 +2,10 @@
 -- QuartzUI v0.1.0
 -- Single-file Luau bundle for roblox-ts widget library.
 --
--- Built   : 2026-04-26T16:34:23Z
+-- Built   : 2026-04-26T16:53:55Z
 -- Modules : 377
--- LOC     : 64,212
--- Bytes   : 1,823,328 (source, pre-envelope)
+-- LOC     : 64,216
+-- Bytes   : 1,823,656 (source, pre-envelope)
 -- Minify  : no
 -- Entry   : init
 --
@@ -49067,7 +49067,7 @@ __QUARTZUI_REGISTRY__ = {
     			local _object = {
     				title = title,
     			}
-    			for _k, _v in props do
+    			for _k, _v in (props or {}) do
     				_object[_k] = _v
     			end
     			local sectionProps = _object
@@ -49336,7 +49336,7 @@ __QUARTZUI_REGISTRY__ = {
     			local _object = {
     				title = id,
     			}
-    			for _k, _v in props do
+    			for _k, _v in (props or {}) do
     				_object[_k] = _v
     			end
     			local sectionProps = _object
@@ -49814,7 +49814,7 @@ __QUARTZUI_REGISTRY__ = {
     			local _object = {
     				title = title,
     			}
-    			for _k, _v in extra do
+    			for _k, _v in (extra or {}) do
     				_object[_k] = _v
     			end
     			local sectionProps = _object
@@ -50111,7 +50111,7 @@ __QUARTZUI_REGISTRY__ = {
     			local _object = {
     				title = id,
     			}
-    			for _k, _v in props do
+    			for _k, _v in (props or {}) do
     				_object[_k] = _v
     			end
     			local sectionProps = _object
@@ -50288,10 +50288,12 @@ __QUARTZUI_REGISTRY__ = {
     			return handle
     		end,
     		Section = function(self, title, extra)
+    			-- Spread an empty object when `extra` is undefined so the
+    			-- compiled `for ... in extra` loop doesn't iterate nil.
     			local _object = {
     				title = title,
     			}
-    			for _k, _v in extra do
+    			for _k, _v in (extra or {}) do
     				_object[_k] = _v
     			end
     			local sectionProps = _object
@@ -50494,7 +50496,7 @@ __QUARTZUI_REGISTRY__ = {
     			local _object = {
     				name = name,
     			}
-    			for _k, _v in extra do
+    			for _k, _v in (extra or {}) do
     				_object[_k] = _v
     			end
     			local tabProps = _object
@@ -51257,10 +51259,12 @@ __QUARTZUI_REGISTRY__ = {
     			handle.Destroy()
     		end,
     		Tab = function(self, name, props)
+    			-- `...(props ?? {})` matters: roblox-ts compiles `...undefined`
+    			-- into `for _k, _v in nil` which throws at call time.
     			local _object = {
     				name = name,
     			}
-    			for _k, _v in props do
+    			for _k, _v in (props or {}) do
     				_object[_k] = _v
     			end
     			local tabProps = _object
@@ -51270,7 +51274,7 @@ __QUARTZUI_REGISTRY__ = {
     			local _object = {
     				tabs = {},
     			}
-    			for _k, _v in props do
+    			for _k, _v in (props or {}) do
     				_object[_k] = _v
     			end
     			local tabGroupProps = _object
@@ -51280,7 +51284,7 @@ __QUARTZUI_REGISTRY__ = {
     			local _object = {
     				title = title,
     			}
-    			for _k, _v in props do
+    			for _k, _v in (props or {}) do
     				_object[_k] = _v
     			end
     			local sectionProps = _object
@@ -51290,7 +51294,7 @@ __QUARTZUI_REGISTRY__ = {
     			local _object = {
     				name = name,
     			}
-    			for _k, _v in props do
+    			for _k, _v in (props or {}) do
     				_object[_k] = _v
     			end
     			local pageProps = _object
