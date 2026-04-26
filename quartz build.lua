@@ -2,10 +2,10 @@
 -- QuartzUI v0.1.0
 -- Single-file Luau bundle for roblox-ts widget library.
 --
--- Built   : 2026-04-26T16:13:58Z
--- Modules : 376
--- LOC     : 63,964
--- Bytes   : 1,812,192 (source, pre-envelope)
+-- Built   : 2026-04-26T16:34:23Z
+-- Modules : 377
+-- LOC     : 64,212
+-- Bytes   : 1,823,328 (source, pre-envelope)
 -- Minify  : no
 -- Entry   : init
 --
@@ -48769,6 +48769,224 @@ __QUARTZUI_REGISTRY__ = {
     }
 
   end,
+  ["imperative/bootstrap"] = function(script, require, QuartzUI_Context)
+    -- Compiled with roblox-ts v3.0.0
+    local TS = __QUARTZUI_TS__
+    --[[
+    	*
+    	 * QuartzUI - registry bootstrap
+    	 *
+    	 * Historically the widget registry stayed full of stub components
+    	 * because no one walked the `components/` tree at runtime; the only
+    	 * call sites for `registerComponent` lived inside this slice and
+    	 * nothing actually invoked them. That made `QuartzUI.Debug()` report
+    	 * every widget as "missing" and caused a stub-warn spam on first
+    	 * mount ("Using stub for widget \"Button\"...").
+    	 *
+    	 * This module imports each concrete widget component and registers it
+    	 * against the authoritative list in `registry.ts`. It runs as a
+    	 * side-effect on import and is pulled in by `globals.ts` before the
+    	 * `_G.QuartzUI` namespace is published, so consumers see a fully
+    	 * populated registry the moment the bundle loads.
+    	 *
+    	 * @module imperative/bootstrap
+    	 * @see AGENTS.md
+    	 
+    ]]
+    local Accordion = TS.import(script, script.Parent.Parent, "components", "Accordion").Accordion
+    local Avatar = TS.import(script, script.Parent.Parent, "components", "Avatar").Avatar
+    local Badge = TS.import(script, script.Parent.Parent, "components", "Badge").Badge
+    local Button = TS.import(script, script.Parent.Parent, "components", "Button").Button
+    local Carousel = TS.import(script, script.Parent.Parent, "components", "Carousel").Carousel
+    local Chart = TS.import(script, script.Parent.Parent, "components", "Chart").Chart
+    local CircularProgress = TS.import(script, script.Parent.Parent, "components", "CircularProgress").CircularProgress
+    local CodeEditor = TS.import(script, script.Parent.Parent, "components", "CodeEditor").CodeEditor
+    local ColorPicker = TS.import(script, script.Parent.Parent, "components", "ColorPicker").ColorPicker
+    local ComboBox = TS.import(script, script.Parent.Parent, "components", "ComboBox").ComboBox
+    local ContextMenu = TS.import(script, script.Parent.Parent, "components", "ContextMenu").ContextMenu
+    local DatePicker = TS.import(script, script.Parent.Parent, "components", "DatePicker").DatePicker
+    local Dialog = TS.import(script, script.Parent.Parent, "components", "Dialog").Dialog
+    local Divider = TS.import(script, script.Parent.Parent, "components", "Divider").Divider
+    local Drawer = TS.import(script, script.Parent.Parent, "components", "Drawer").Drawer
+    local Dropdown = TS.import(script, script.Parent.Parent, "components", "Dropdown").Dropdown
+    local GradientEditor = TS.import(script, script.Parent.Parent, "components", "GradientEditor").GradientEditor
+    local Icon = TS.import(script, script.Parent.Parent, "components", "Icon").Icon
+    local IconButton = TS.import(script, script.Parent.Parent, "components", "IconButton").IconButton
+    local Image = TS.import(script, script.Parent.Parent, "components", "Image").Image
+    local Keybind = TS.import(script, script.Parent.Parent, "components", "Keybind").Keybind
+    local Keyframer = TS.import(script, script.Parent.Parent, "components", "Keyframer").Keyframer
+    local Label = TS.import(script, script.Parent.Parent, "components", "Label").Label
+    local Modal = TS.import(script, script.Parent.Parent, "components", "Modal").Modal
+    local MultiSelect = TS.import(script, script.Parent.Parent, "components", "MultiSelect").MultiSelect
+    local Notification = TS.import(script, script.Parent.Parent, "components", "Notification").Notification
+    local Page = TS.import(script, script.Parent.Parent, "components", "Page").Page
+    local Paragraph = TS.import(script, script.Parent.Parent, "components", "Paragraph").Paragraph
+    local PlayerList = TS.import(script, script.Parent.Parent, "components", "PlayerList").PlayerList
+    local Popover = TS.import(script, script.Parent.Parent, "components", "Popover").Popover
+    local Progress = TS.import(script, script.Parent.Parent, "components", "Progress").Progress
+    local RangeSlider = TS.import(script, script.Parent.Parent, "components", "RangeSlider").RangeSlider
+    local ScriptRunner = TS.import(script, script.Parent.Parent, "components", "ScriptRunner").ScriptRunner
+    local Section = TS.import(script, script.Parent.Parent, "components", "Section").Section
+    local Skeleton = TS.import(script, script.Parent.Parent, "components", "Skeleton").Skeleton
+    local Slider = TS.import(script, script.Parent.Parent, "components", "Slider").Slider
+    local Snackbar = TS.import(script, script.Parent.Parent, "components", "Snackbar").Snackbar
+    local Spinner = TS.import(script, script.Parent.Parent, "components", "Spinner").Spinner
+    local Splitter = TS.import(script, script.Parent.Parent, "components", "Splitter").Splitter
+    local Tab = TS.import(script, script.Parent.Parent, "components", "Tab").Tab
+    local TabGroup = TS.import(script, script.Parent.Parent, "components", "TabGroup").TabGroup
+    local Table = TS.import(script, script.Parent.Parent, "components", "Table").Table
+    local Terminal = TS.import(script, script.Parent.Parent, "components", "Terminal").Terminal
+    local TextArea = TS.import(script, script.Parent.Parent, "components", "TextArea").TextArea
+    local TextInput = TS.import(script, script.Parent.Parent, "components", "TextInput").TextInput
+    local Toast = TS.import(script, script.Parent.Parent, "components", "Toast").Toast
+    local Toggle = TS.import(script, script.Parent.Parent, "components", "Toggle").Toggle
+    local Tooltip = TS.import(script, script.Parent.Parent, "components", "Tooltip").Tooltip
+    local Tree = TS.import(script, script.Parent.Parent, "components", "Tree").Tree
+    local VectorInput = TS.import(script, script.Parent.Parent, "components", "VectorInput").VectorInput
+    local Window = TS.import(script, script.Parent.Parent, "components", "Window").Window
+    local _registry = TS.import(script, script.Parent, "registry")
+    local WIDGET_NAMES = _registry.WIDGET_NAMES
+    local registerComponent = _registry.registerComponent
+    local registeredComponentCount = _registry.registeredComponentCount
+    local unregisteredWidgetNames = _registry.unregisteredWidgetNames
+    local VERSION = TS.import(script, script.Parent, "version").VERSION
+    -- ---------------------------------------------------------------------------
+    -- Authoritative name -> component map
+    -- ---------------------------------------------------------------------------
+    --[[
+    	*
+    	 * Mapping between the widget name stored in {@link WIDGET_NAMES} and the
+    	 * concrete Roact component imported from the `components/` tree.
+    	 *
+    	 * Keeping the map tight is deliberate: any future widget addition has
+    	 * to land in three places (widget folder, authoritative list, this
+    	 * map) so `isRegistryComplete()` stays truthful.
+    	 
+    ]]
+    local COMPONENT_MAP = {
+    	Accordion = Accordion,
+    	Avatar = Avatar,
+    	Badge = Badge,
+    	Button = Button,
+    	Carousel = Carousel,
+    	Chart = Chart,
+    	CircularProgress = CircularProgress,
+    	CodeEditor = CodeEditor,
+    	ColorPicker = ColorPicker,
+    	ComboBox = ComboBox,
+    	ContextMenu = ContextMenu,
+    	DatePicker = DatePicker,
+    	Dialog = Dialog,
+    	Divider = Divider,
+    	Drawer = Drawer,
+    	Dropdown = Dropdown,
+    	GradientEditor = GradientEditor,
+    	Icon = Icon,
+    	IconButton = IconButton,
+    	Image = Image,
+    	Keybind = Keybind,
+    	Keyframer = Keyframer,
+    	Label = Label,
+    	Modal = Modal,
+    	MultiSelect = MultiSelect,
+    	Notification = Notification,
+    	Page = Page,
+    	Paragraph = Paragraph,
+    	PlayerList = PlayerList,
+    	Popover = Popover,
+    	Progress = Progress,
+    	RangeSlider = RangeSlider,
+    	ScriptRunner = ScriptRunner,
+    	Section = Section,
+    	Skeleton = Skeleton,
+    	Slider = Slider,
+    	Snackbar = Snackbar,
+    	Spinner = Spinner,
+    	Splitter = Splitter,
+    	Tab = Tab,
+    	TabGroup = TabGroup,
+    	Table = Table,
+    	Terminal = Terminal,
+    	TextArea = TextArea,
+    	TextInput = TextInput,
+    	Toast = Toast,
+    	Toggle = Toggle,
+    	Tooltip = Tooltip,
+    	Tree = Tree,
+    	VectorInput = VectorInput,
+    	Window = Window,
+    }
+    -- ---------------------------------------------------------------------------
+    -- Bootstrap
+    -- ---------------------------------------------------------------------------
+    local bootstrapped = false
+    --[[
+    	*
+    	 * Register every concrete component against the registry. Idempotent;
+    	 * repeated calls (e.g. from hot-reload) skip the walk.
+    	 *
+    	 * @returns The number of components that were newly bound on this call.
+    	 
+    ]]
+    local function bootstrapRegistry()
+    	if bootstrapped then
+    		return 0
+    	end
+    	bootstrapped = true
+    	local bound = 0
+    	for _, name in WIDGET_NAMES do
+    		local component = COMPONENT_MAP[name]
+    		if component == nil then
+    			warn(`[QuartzUI] bootstrap: no component export found for "{name}"`)
+    			continue
+    		end
+    		registerComponent(name, component)
+    		bound += 1
+    	end
+    	return bound
+    end
+    --[[
+    	*
+    	 * Whether the bootstrap routine has run in this runtime. Useful for
+    	 * tests that want to assert the side effect.
+    	 
+    ]]
+    local function isBootstrapped()
+    	return bootstrapped
+    end
+    -- ---------------------------------------------------------------------------
+    -- Banner
+    -- ---------------------------------------------------------------------------
+    --[[
+    	*
+    	 * Print a one-shot "QuartzUI loaded" banner to the output window so
+    	 * loadstring consumers get immediate visual confirmation that the
+    	 * 60,000 line bundle actually finished initialising. Emits a warning
+    	 * instead when one or more widgets failed to register so issues
+    	 * surface without being silently swallowed.
+    	 
+    ]]
+    local function emitLoadBanner(bound)
+    	local total = #WIDGET_NAMES
+    	local registered = registeredComponentCount()
+    	local missing = unregisteredWidgetNames()
+    	if #missing == 0 then
+    		print(`[QuartzUI] Loaded v{VERSION} - {registered}/{total} widgets ready ` .. `({bound} registered this pass).`)
+    		return nil
+    	end
+    	warn(`[QuartzUI] Loaded v{VERSION} with missing widgets ({#missing}): ` .. table.concat(missing, ", "))
+    end
+    -- ---------------------------------------------------------------------------
+    -- Module side effect
+    -- ---------------------------------------------------------------------------
+    local boundThisPass = bootstrapRegistry()
+    emitLoadBanner(boundThisPass)
+    return {
+    	bootstrapRegistry = bootstrapRegistry,
+    	isBootstrapped = isBootstrapped,
+    }
+
+  end,
   ["imperative/builders/Accordion"] = function(script, require, QuartzUI_Context)
     -- Compiled with roblox-ts v3.0.0
     local TS = __QUARTZUI_TS__
@@ -53282,6 +53500,11 @@ __QUARTZUI_REGISTRY__ = {
     	 * @see AGENTS.md
     	 
     ]]
+    -- Importing the bootstrap module as a side effect populates the
+    -- registry with concrete widget components before `_G.QuartzUI` is
+    -- published, which in turn lets the stub-warning code path stay quiet
+    -- on first mount.
+    TS.import(script, script.Parent, "bootstrap")
     local QuartzUI = TS.import(script, script.Parent, "QuartzUI").QuartzUI
     local VERSION = TS.import(script, script.Parent, "version").VERSION
     local unmountAll = TS.import(script, script.Parent, "runtime").unmountAll
@@ -53918,6 +54141,10 @@ __QUARTZUI_REGISTRY__ = {
     exports.buildTable = TS.import(script, script, "builders", "Table").buildTable
     exports.buildKeyframer = TS.import(script, script, "builders", "Keyframer").buildKeyframer
     exports.buildModal = TS.import(script, script, "builders", "Modal").buildModal
+    -- Bootstrap helpers (registry population).
+    local _bootstrap = TS.import(script, script, "bootstrap")
+    exports.bootstrapRegistry = _bootstrap.bootstrapRegistry
+    exports.isBootstrapped = _bootstrap.isBootstrapped
     -- Side effect: install globals on first import.
     -- (`globals.ts` self-installs at module load.)
     TS.import(script, script, "globals")
@@ -54062,6 +54289,15 @@ __QUARTZUI_REGISTRY__ = {
     -- Registry state
     -- ---------------------------------------------------------------------------
     local ENTRIES = {}
+    --[[
+    	*
+    	 * Lua functions cannot carry properties, so the stub flag can't live
+    	 * on the component itself. We track stubs out-of-band by recording
+    	 * each stub-valued component in this set. `registerComponent` removes
+    	 * the reference when a real implementation lands.
+    	 
+    ]]
+    local STUB_COMPONENTS = {}
     for _, name in WIDGET_NAMES do
     	local category = CATEGORY_BY_NAME[name] or "Display"
     	local _condition = CHAINABLE_BY_NAME[name]
@@ -54069,9 +54305,11 @@ __QUARTZUI_REGISTRY__ = {
     		_condition = false
     	end
     	local chainable = _condition
+    	local stub = makeStubComponent(name)
+    	STUB_COMPONENTS[stub] = true
     	local _arg1 = {
     		name = name,
-    		component = makeStubComponent(name),
+    		component = stub,
     		builder = nil,
     		category = category,
     		chainable = chainable,
@@ -54096,6 +54334,10 @@ __QUARTZUI_REGISTRY__ = {
     	if entry == nil then
     		warn(`[QuartzUI] registerComponent: unknown widget \"{name}\".`)
     		return nil
+    	end
+    	if entry.component ~= nil then
+    		local _component = entry.component
+    		STUB_COMPONENTS[_component] = nil
     	end
     	entry.component = component
     end
@@ -54153,7 +54395,9 @@ __QUARTZUI_REGISTRY__ = {
     		return makeStubComponent(name)
     	end
     	if entry.component == nil then
-    		entry.component = makeStubComponent(name)
+    		local stub = makeStubComponent(name)
+    		STUB_COMPONENTS[stub] = true
+    		entry.component = stub
     	end
     	return entry.component
     end
@@ -54257,8 +54501,12 @@ __QUARTZUI_REGISTRY__ = {
     -- Debug helpers
     -- ---------------------------------------------------------------------------
     function isStub(component)
-    	local named = component
-    	return named.QuartzStub == true
+    	-- Stubs are tracked in a dedicated set because Luau functions
+    	-- can't carry property markers, so an in-memory identity check is
+    	-- the only reliable way to tell them apart from registered
+    	-- components.
+    	local _component = component
+    	return STUB_COMPONENTS[_component] ~= nil
     end
     --[[
     	*
@@ -54329,6 +54577,7 @@ __QUARTZUI_REGISTRY__ = {
     ]]
     local function clearRegistry()
     	table.clear(ENTRIES)
+    	table.clear(STUB_COMPONENTS)
     	for _, name in WIDGET_NAMES do
     		local category = CATEGORY_BY_NAME[name] or "Display"
     		local _condition = CHAINABLE_BY_NAME[name]
@@ -54336,9 +54585,11 @@ __QUARTZUI_REGISTRY__ = {
     			_condition = false
     		end
     		local chainable = _condition
+    		local stub = makeStubComponent(name)
+    		STUB_COMPONENTS[stub] = true
     		local _arg1 = {
     			name = name,
-    			component = makeStubComponent(name),
+    			component = stub,
     			builder = nil,
     			category = category,
     			chainable = chainable,
